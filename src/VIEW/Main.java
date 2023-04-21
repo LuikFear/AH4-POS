@@ -635,14 +635,16 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_B1crearPActionPerformed
 
     private void B4DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4DeleteActionPerformed
-
-//
-//        if (Vtable.getSelectedRow() < 0) {
-//            JOptionPane.showMessageDialog(null, "Selecciona Una Fila primero");
-//        } else {
-//
-//        }
-
+        filaV = Vtable.getSelectedRow();
+        if (Vtable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "Elige una fila", "Alerta", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int codigo = Integer.parseInt(Vtable.getValueAt(filaV, 0).toString());
+            daoV.eliminar_vendedor(codigo);
+            this.dispose();
+            new Main().setVisible(true);
+        }
+ 
     }//GEN-LAST:event_B4DeleteActionPerformed
 
     private void B4Delete4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4Delete4ActionPerformed

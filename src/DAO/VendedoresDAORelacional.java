@@ -98,11 +98,7 @@ public class VendedoresDAORelacional implements DAOVendedoresInterface{
             System.out.println(e);
         }
         
-        
-        
-        
-        
-        
+
         
     }
 
@@ -131,7 +127,15 @@ public class VendedoresDAORelacional implements DAOVendedoresInterface{
   
     @Override
     public void eliminar_vendedor(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         String sql = "DELETE FROM vendedores WHERE codigo = ?;";
+         
+        try {
+            con = acceso.Conectar();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, codigo);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
     }
     
     
