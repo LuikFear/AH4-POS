@@ -5,6 +5,8 @@
  */
 package VIEW;
 
+import DAO.VendedoresDAORelacional;
+import MODEL.Vendedores;
 import java.util.LinkedList;
 import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
@@ -24,7 +26,7 @@ public class CrearV extends javax.swing.JFrame {
      */
     public CrearV() {
         initComponents();
-        
+         this.setLocationRelativeTo(this);
          
     }
  
@@ -40,19 +42,19 @@ public class CrearV extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        Tcodigo = new javax.swing.JTextField();
-        tnombre = new javax.swing.JTextField();
-        tcaja = new javax.swing.JTextField();
-        tventas = new javax.swing.JTextField();
+        JTcodigo = new javax.swing.JTextField();
+        JTnombre = new javax.swing.JTextField();
+        JTcaja = new javax.swing.JTextField();
+        JTventas = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        tgenero = new javax.swing.JTextField();
+        JTgenero = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        tpass = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
+        JTcontraseña = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,9 +65,9 @@ public class CrearV extends javax.swing.JFrame {
 
         jLabel6.setText("Genero");
 
-        Tcodigo.addActionListener(new java.awt.event.ActionListener() {
+        JTcodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TcodigoActionPerformed(evt);
+                JTcodigoActionPerformed(evt);
             }
         });
 
@@ -100,27 +102,26 @@ public class CrearV extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(87, 87, 87)
-                            .addComponent(jLabel1))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(37, 37, 37)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2))
-                            .addGap(39, 39, 39)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(Tcodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                .addComponent(tnombre)
-                                .addComponent(tcaja)
-                                .addComponent(tventas)
-                                .addComponent(tgenero)
-                                .addComponent(tpass))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JTcodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(JTnombre)
+                            .addComponent(JTcaja)
+                            .addComponent(JTventas)
+                            .addComponent(JTgenero)
+                            .addComponent(JTcontraseña)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jButton2)
@@ -136,27 +137,27 @@ public class CrearV extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(Tcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(tnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(tcaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTcaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(tventas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTventas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(tgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(tpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -182,36 +183,30 @@ public class CrearV extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TcodigoActionPerformed
+    private void JTcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTcodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TcodigoActionPerformed
+    }//GEN-LAST:event_JTcodigoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (Tcodigo.getText().isEmpty() && tnombre.getText().isEmpty() 
-                && tcaja.getText().isEmpty() && tpass.getText().isEmpty() && tventas.getText().isEmpty()  ) {
+        if (JTcodigo.getText().isEmpty() && JTnombre.getText().isEmpty() 
+                && JTcaja.getText().isEmpty() && JTcontraseña.getText().isEmpty() && JTventas.getText().isEmpty()  ) {
             JOptionPane.showMessageDialog(null, "Llena todos los campos");
         } else {
-               guardar();
-    
-         
-        
-               
-               
-               
-               
+                enviar();
+         Main Newframe = new Main();
+        Newframe.setVisible(true);
+        dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        App Newframe = new App() ;
+        Main Newframe = new Main() ;
             Newframe.setVisible(true);
             dispose();
-        
-        
-        
+    
     }//GEN-LAST:event_jButton2ActionPerformed
      
          
@@ -226,12 +221,11 @@ public class CrearV extends javax.swing.JFrame {
    private void enviar() {
     
     
-    usuarios US = new usuarios(JTnombre.getText(), JTapellido.getText(), Integer.parseInt(JTelefono.getText()), JTdireccion.getText(), JTcorreo.getText(), JTfecha.getText(), 2, valor, PFcontra.getText());
-    UsuariosDAORelacional USDAO = new UsuariosDAORelacional();
-    USDAO.crear(US);
+    Vendedores VE = new Vendedores(Integer.parseInt(JTcodigo.getText()), JTnombre.getText(), Integer.parseInt(JTcaja.getText()), Integer.parseInt(JTventas.getText()), JTgenero.getText(), JTcontraseña.getText());
+    VendedoresDAORelacional VEDAO = new VendedoresDAORelacional();
+    VEDAO.crear_vendedor(VE);
 }
 
-   
     
     /**
      * @param args the command line arguments
@@ -280,7 +274,12 @@ public class CrearV extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Tcodigo;
+    private javax.swing.JTextField JTcaja;
+    private javax.swing.JTextField JTcodigo;
+    private javax.swing.JTextField JTcontraseña;
+    private javax.swing.JTextField JTgenero;
+    private javax.swing.JTextField JTnombre;
+    private javax.swing.JTextField JTventas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -291,10 +290,5 @@ public class CrearV extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField tcaja;
-    private javax.swing.JTextField tgenero;
-    private javax.swing.JTextField tnombre;
-    private javax.swing.JPasswordField tpass;
-    private javax.swing.JTextField tventas;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,6 +23,12 @@ public class Main extends javax.swing.JFrame {
     DefaultTableModel tablaC;
     DefaultTableModel tablaV;
 
+    
+     int filaV = -1;
+    VendedoresDAORelacional daoV = new VendedoresDAORelacional();
+    
+    
+    
     public Main() {
         initComponents();
         datosC();
@@ -532,16 +538,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_B2CargarActionPerformed
 
     private void B3UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3UpdateActionPerformed
-        // TODO add your handling code here:
-//        if (Vtable.getSelectedRow() < 0) {
-//            JOptionPane.showMessageDialog(null, "Selecciona Una Fila primero");
-//        } else {
-//            ModVen mv = new ModVen();
-//            mv.content = Vtable.getSelectedRow();
-//            mv.mostrar(Vtable.getSelectedRow());
-//            mv.setVisible(true);
-//            dispose();
-//        }
+        filaV = Vtable.getSelectedRow();
+        if (Vtable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "Elige una opcion", "Alerta", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int codigo = Integer.parseInt(Vtable.getValueAt(filaV, 0).toString());
+            this.dispose();
+            new ModV(daoV.obtener_vendedor(codigo)).setVisible(true);
+        }
 
 
     }//GEN-LAST:event_B3UpdateActionPerformed
