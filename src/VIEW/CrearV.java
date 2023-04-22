@@ -21,9 +21,6 @@ public class CrearV extends javax.swing.JFrame {
    
    
    
-    /**
-     * Creates new form Crear
-     */
     public CrearV() {
         initComponents();
          this.setLocationRelativeTo(this);

@@ -13,26 +13,30 @@ import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import DAO.DAOCLientesInterface;
+import DAO.ProductosDAORelacional;
 import MODEL.Vendedores;
 import DAO.VendedoresDAORelacional;
 import DAO.VendedoresDAORelacional;
+import MODEL.Productos;
 
 public class Main extends javax.swing.JFrame {
 //tables
 
     DefaultTableModel tablaC;
     DefaultTableModel tablaV;
-
+    DefaultTableModel tablaP;
     
      int filaV = -1;
+     int filaP = -1;
     VendedoresDAORelacional daoV = new VendedoresDAORelacional();
-    
+    ProductosDAORelacional daoP = new ProductosDAORelacional();
     
     
     public Main() {
         initComponents();
         datosC();
         datosV();
+        datosP();
         this.setLocationRelativeTo(this);
 //        MostrarTabla();
 //        MostrarTablaP();
@@ -608,16 +612,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_B3Update3ActionPerformed
 
     private void B3UpdatePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3UpdatePActionPerformed
-
-//        if (TablaP.getSelectedRow() < 0) {
-//            JOptionPane.showMessageDialog(null, "Selecciona Una Fila primero");
-//        } else {
-//            UpPro mvp = new UpPro();
-//            mvp.contentP = TablaP.getSelectedRow();
-//            mvp.mostrar(TablaP.getSelectedRow());
-//            mvp.setVisible(true);
-//            dispose();
-//        }
+  filaP = Ptable.getSelectedRow();
+        if (Ptable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "Elige una opcion", "Alerta", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int codigo = Integer.parseInt(Ptable.getValueAt(filaP, 0).toString());
+            this.dispose();
+            new ModP(daoP.obtener_pro(codigo)).setVisible(true);
+        }
 
     }//GEN-LAST:event_B3UpdatePActionPerformed
 
@@ -648,18 +650,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_B4DeleteActionPerformed
 
     private void B4Delete4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4Delete4ActionPerformed
-        // TODO add your handling code here:
-
-//        if (TablaP.getSelectedRow() < 0) {
-//            JOptionPane.showMessageDialog(null, "Selecciona Una Fila primero");
-//        } else {
-//
-//            ProductList.Stock.remove(TablaP.getSelectedRow());
-//
-//            Main Newframe = new Main();
-//            Newframe.setVisible(true);
-//            dispose();
-//        }
+    filaP = Ptable.getSelectedRow();
+        if (Ptable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "Elige una fila", "Alerta", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int codigo = Integer.parseInt(Ptable.getValueAt(filaP, 0).toString());
+            daoP.eliminar_pro(codigo);
+            this.dispose();
+            new Main().setVisible(true);
+        }
     }//GEN-LAST:event_B4Delete4ActionPerformed
 
     private void B4Delete3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4Delete3ActionPerformed
@@ -729,28 +728,26 @@ public class Main extends javax.swing.JFrame {
         Vtable.setModel(tablaV);
     }
 
-//     //  C L I E N T S 
-//    public void MostrarTablaC(){
-//        
-//        String columnas [] = {"Codigo","Nombre","NIT","Correo","Genero"};
-//        DefaultTableModel tabloton = new DefaultTableModel(null,columnas);
-//        
-//        
-//        for(ClientsList Sp : ClientsList.List) {
-//        Object filas[] = new Object[5];
-//        filas[0] = Sp.getCodigo();
-//        filas[1] = Sp.getNombre();
-//        filas[2] = Sp.getNIT();
-//        filas[4] = Sp.getGenero();
-//        filas[3] = Sp.getCorreo();
-//        tabloton.addRow(filas);
-//        }
-//        
-//        TablaC.setModel(tabloton);
-//     
-//     
-//     
-//    }
+        private void datosP() {
+        String columnas[] = {"codigo", "nombre", "descripcion", "cantidad", "precio"};
+        tablaP = new DefaultTableModel(null, columnas);
+       ProductosDAORelacional PRDAO = new ProductosDAORelacional();
+
+        for (Productos dat : PRDAO.listarP()) {
+            Object help[] = new Object[5];
+            help[0] = dat.getCodigo();
+            help[1] = dat.getNombre();
+            help[2] = dat.getDescripcion();
+            help[3] = dat.getCantidad();
+            help[4] = dat.getPrecio();
+            tablaP.addRow(help);
+        }
+        Ptable.setModel(tablaP);
+    }
+
+
+
+
 //     
 //     
 //     public void MostrarTablaS(){

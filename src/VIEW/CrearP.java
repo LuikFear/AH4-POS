@@ -1,26 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package VIEW;
 
-/**
- *
- * @author LuikFear
- */
 
 
+import DAO.ProductosDAORelacional;
+import MODEL.Productos;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
 public class CrearP extends javax.swing.JFrame {
- LinkedList<ProductList> Stock = new LinkedList<ProductList> ();
-    /**
-     * Creates new form CrearP
-     */
+ 
+    
     public CrearP() {
         initComponents();
+          this.setLocationRelativeTo(this);
     }
 
     /**
@@ -35,12 +28,12 @@ public class CrearP extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        Tcodigo = new javax.swing.JTextField();
-        tnombre = new javax.swing.JTextField();
-        Tdescritption = new javax.swing.JTextField();
-        Tcantidad = new javax.swing.JTextField();
+        JTcodigo = new javax.swing.JTextField();
+        JTnombre = new javax.swing.JTextField();
+        JTdes = new javax.swing.JTextField();
+        JTcantidad = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        Tprecio = new javax.swing.JTextField();
+        JTprecio = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -56,9 +49,9 @@ public class CrearP extends javax.swing.JFrame {
 
         jLabel6.setText("Precio");
 
-        Tcodigo.addActionListener(new java.awt.event.ActionListener() {
+        JTcodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TcodigoActionPerformed(evt);
+                JTcodigoActionPerformed(evt);
             }
         });
 
@@ -111,11 +104,11 @@ public class CrearP extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(Tcodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                .addComponent(tnombre)
-                                .addComponent(Tdescritption)
-                                .addComponent(Tcantidad)
-                                .addComponent(Tprecio)))))
+                                .addComponent(JTcodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                .addComponent(JTnombre)
+                                .addComponent(JTdes)
+                                .addComponent(JTcantidad)
+                                .addComponent(JTprecio)))))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -126,23 +119,23 @@ public class CrearP extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(Tcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(tnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(Tdescritption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTdes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(Tcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(Tprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
@@ -170,41 +163,66 @@ public class CrearP extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TcodigoActionPerformed
+    private void JTcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTcodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TcodigoActionPerformed
+    }//GEN-LAST:event_JTcodigoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        if (Tcodigo.getText().isEmpty() && tnombre.getText().isEmpty()
-            && Tdescritption.getText().isEmpty()&& Tcantidad.getText().isEmpty()  ) {
+        if (JTcodigo.getText().isEmpty() && JTnombre.getText().isEmpty() 
+                && JTdes.getText().isEmpty() && JTcantidad.getText().isEmpty() && JTprecio.getText().isEmpty()  ) {
             JOptionPane.showMessageDialog(null, "Llena todos los campos");
         } else {
-            guardar();
-
-
+                enviar();
+         Main Newframe = new Main();
+        Newframe.setVisible(true);
+        dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
-        App Newframe = new App() ;
+       Main Newframe = new Main() ;
         Newframe.setVisible(true);
        dispose();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-     public void guardar(){
-        
-      
-       ProductList.Stock.add(new ProductList(Integer.parseInt(Tcodigo.getText()), tnombre.getText(), Tdescritption.getText(),
-       Integer.parseInt(Tcantidad.getText()),Integer.parseInt(Tprecio.getText())));
-        
-    App ap = new App ();
-    ap.setVisible(true);
-    dispose();
-     }
+    
+    
+      private void enviar() {
+    
+    
+    Productos PRO = new Productos(Integer.parseInt(JTcodigo.getText()), JTnombre.getText(), JTdes.getText(), Integer.parseInt(JTcantidad.getText()),Float.parseFloat(JTprecio.getText()));
+    ProductosDAORelacional PRODAO = new ProductosDAORelacional();
+    PRODAO.crear_pro(PRO);
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -242,10 +260,11 @@ public class CrearP extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Tcantidad;
-    private javax.swing.JTextField Tcodigo;
-    private javax.swing.JTextField Tdescritption;
-    private javax.swing.JTextField Tprecio;
+    private javax.swing.JTextField JTcantidad;
+    private javax.swing.JTextField JTcodigo;
+    private javax.swing.JTextField JTdes;
+    private javax.swing.JTextField JTnombre;
+    private javax.swing.JTextField JTprecio;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -255,6 +274,5 @@ public class CrearP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField tnombre;
     // End of variables declaration//GEN-END:variables
 }
