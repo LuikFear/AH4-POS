@@ -123,4 +123,40 @@ public class VendedoresDAORelacional implements DAOVendedoresInterface {
         }
     }
 
+    public Vendedores consultar_vendedores (String correo, String contraseña){
+         
+         String sql = "select * from vendedores where nombre=? and password = ? ";
+         
+         try {
+              con = acceso.Conectar();
+            ps = con.prepareStatement(sql);
+              ps.setString(1,correo);
+              ps.setString(2,contraseña);
+              
+              rs= ps.executeQuery();
+              
+              
+              if (rs.next()) {
+                  Vendedores vendedor = new Vendedores(rs.getInt(1), rs.getString(2), rs.getString (6));
+                  return vendedor;
+             }
+              
+              
+         } catch (Exception e) {
+             System.out.println(e);
+         }
+         
+         
+         return null;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
 }

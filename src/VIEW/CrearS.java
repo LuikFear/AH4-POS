@@ -5,6 +5,8 @@
  */
 package VIEW;
 
+import DAO.SucursalesDAORelacional;
+import MODEL.Sucursales;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
@@ -13,12 +15,13 @@ import javax.swing.JOptionPane;
  * @author LuikFear
  */
 public class CrearS extends javax.swing.JFrame {
-LinkedList<SucList> Ad = new LinkedList<SucList> ();
+
     /**
      * Creates new form CrearS
      */
     public CrearS() {
         initComponents();
+        this.setLocationRelativeTo(this);
     }
 
     /**
@@ -33,12 +36,12 @@ LinkedList<SucList> Ad = new LinkedList<SucList> ();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        Tcodigo = new javax.swing.JTextField();
-        tnombre = new javax.swing.JTextField();
-        Tdi = new javax.swing.JTextField();
-        Tcorreo = new javax.swing.JTextField();
+        JTcodigo = new javax.swing.JTextField();
+        JTnombre = new javax.swing.JTextField();
+        JTdireccion = new javax.swing.JTextField();
+        JTcorreo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        Tlefono = new javax.swing.JTextField();
+        JTelefono = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -54,9 +57,9 @@ LinkedList<SucList> Ad = new LinkedList<SucList> ();
 
         jLabel6.setText("Telefono");
 
-        Tcodigo.addActionListener(new java.awt.event.ActionListener() {
+        JTcodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TcodigoActionPerformed(evt);
+                JTcodigoActionPerformed(evt);
             }
         });
 
@@ -103,11 +106,11 @@ LinkedList<SucList> Ad = new LinkedList<SucList> ();
                                 .addComponent(jLabel2))
                             .addGap(58, 58, 58)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(Tcodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                .addComponent(tnombre)
-                                .addComponent(Tdi)
-                                .addComponent(Tcorreo)
-                                .addComponent(Tlefono))))
+                                .addComponent(JTcodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                .addComponent(JTnombre)
+                                .addComponent(JTdireccion)
+                                .addComponent(JTcorreo)
+                                .addComponent(JTelefono))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jButton2)
@@ -123,23 +126,23 @@ LinkedList<SucList> Ad = new LinkedList<SucList> ();
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(Tcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(tnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(Tdi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(Tcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(Tlefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -164,45 +167,39 @@ LinkedList<SucList> Ad = new LinkedList<SucList> ();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TcodigoActionPerformed
+    private void JTcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTcodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TcodigoActionPerformed
+    }//GEN-LAST:event_JTcodigoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (Tcodigo.getText().isEmpty() && tnombre.getText().isEmpty()
-            && Tdi.getText().isEmpty() && Tcorreo.getText().isEmpty() && Tlefono.getText().isEmpty()  ) {
+        if (JTcodigo.getText().isEmpty() && JTnombre.getText().isEmpty() 
+                && JTdireccion.getText().isEmpty() && JTcorreo.getText().isEmpty() && JTelefono.getText().isEmpty()  ) {
             JOptionPane.showMessageDialog(null, "Llena todos los campos");
         } else {
-            guardar();
-         
-        }
+                enviarS();
+         Main Newframe = new Main();
+        Newframe.setVisible(true);
+        dispose();
+         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
-        App Newframe = new App() ;
+        Main Newframe = new Main() ;
         Newframe.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     
-    public void guardar(){
-        
-      
-       SucList.Ad.add(new SucList(Integer.parseInt(Tcodigo.getText()), tnombre.getText(), 
-       Tdi.getText(), Tcorreo.getText(), Integer.parseInt(Tlefono.getText())));
-        
-    App ap = new App ();
-    ap.setVisible(true);
-    dispose();
+    private void enviarS() {
     
-       
-       
-       
-       
-    }
+    
+    Sucursales SUC = new Sucursales(Integer.parseInt(JTcodigo.getText()), JTnombre.getText(), JTdireccion.getText(), JTcorreo.getText(), Integer.parseInt(JTelefono.getText()));
+    SucursalesDAORelacional SUDAO = new SucursalesDAORelacional();
+    SUDAO.crear_sucursal (SUC);
+}
     
     
     
@@ -262,10 +259,11 @@ LinkedList<SucList> Ad = new LinkedList<SucList> ();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Tcodigo;
-    private javax.swing.JTextField Tcorreo;
-    private javax.swing.JTextField Tdi;
-    private javax.swing.JTextField Tlefono;
+    private javax.swing.JTextField JTcodigo;
+    private javax.swing.JTextField JTcorreo;
+    private javax.swing.JTextField JTdireccion;
+    private javax.swing.JTextField JTelefono;
+    private javax.swing.JTextField JTnombre;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -275,6 +273,5 @@ LinkedList<SucList> Ad = new LinkedList<SucList> ();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField tnombre;
     // End of variables declaration//GEN-END:variables
 }
