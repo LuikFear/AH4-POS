@@ -76,11 +76,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jButton1" min="-2" pref="131" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="Tcodigo" alignment="0" pref="140" max="32767" attributes="0"/>
-                                  <Component id="tnombre" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="Tdescritption" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="Tcantidad" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="Tprecio" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="JTcodigo" alignment="0" pref="140" max="32767" attributes="0"/>
+                                  <Component id="JTnombre" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="JTdes" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="JTcantidad" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="JTprecio" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -97,27 +97,27 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Tcodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JTcodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tnombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JTnombre" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Tdescritption" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JTdes" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Tcantidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JTcantidad" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Tprecio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JTprecio" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -146,23 +146,23 @@
             <Property name="text" type="java.lang.String" value="Precio"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Tcodigo">
+        <Component class="javax.swing.JTextField" name="JTcodigo">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TcodigoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTcodigoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="tnombre">
+        <Component class="javax.swing.JTextField" name="JTnombre">
         </Component>
-        <Component class="javax.swing.JTextField" name="Tdescritption">
+        <Component class="javax.swing.JTextField" name="JTdes">
         </Component>
-        <Component class="javax.swing.JTextField" name="Tcantidad">
+        <Component class="javax.swing.JTextField" name="JTcantidad">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Codigo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Tprecio">
+        <Component class="javax.swing.JTextField" name="JTprecio">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>

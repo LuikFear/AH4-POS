@@ -35,6 +35,12 @@ public class Vendedores {
         this.pass = pass;
     }
 
+    public Vendedores(int codigo, String nombre, String pass) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.pass = pass;
+    }
+
     
     
     

@@ -5,6 +5,8 @@
  */
 package VIEW;
 
+import DAO.VendedoresDAORelacional;
+import MODEL.Vendedores;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -107,7 +109,14 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_JTuserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-Ingresar();     
+// TODO add your handling code here:
+        if (!JTuser.getText().isEmpty()&&!PFps.getText().isEmpty()  ) {
+            consulta();
+        }else{
+            JOptionPane.showMessageDialog(null, "Rellene los espacios");
+        }
+  
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
   
@@ -126,29 +135,23 @@ Ingresar();
     
     
     
-    public void Ingresar () {
-        if  (JTuser.getText().equals("admin")&& PFps.getText().equals("admin")) {
-            Main Newframe = new Main() ;
-            Newframe.setVisible(true);
-            dispose();
+    private void consulta(){
+        
+        VendedoresDAORelacional ud = new VendedoresDAORelacional();
+        Vendedores ven = ud.consultar_vendedores (JTuser.getText(),PFps.getText());
+         if (ven != null){
+            
+        } else {
+        }
+    Main ve = new Main();
+    ve.informacion(ven);
+    ve.setVisible(true);
+    dispose();
+        
      
-        }else{ 
-            for (vendedores ven: vendedores.Lista){
-               if  (T1.getText().equals(ven.getNombre())&& P1.getText().equals(ven.getpass())) {
-                 Venderdor Newframe = new Venderdor () ;
-            Newframe.setVisible(true);
-            dispose();
-                
-               }
-               // not working :C
-             else{   
-             JOptionPane.showMessageDialog(null, "Llena todos los campos");  
-               
-               }
-        }
-        }
-       }
-    
+    }
+       
+
     
     
     

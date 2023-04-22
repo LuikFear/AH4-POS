@@ -5,6 +5,8 @@
  */
 package VIEW;
 
+import DAO.ClientesDAORelacional;
+import MODEL.Clientes;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 
@@ -13,12 +15,13 @@ import javax.swing.JOptionPane;
  * @author LuikFear
  */
 public class CrearC extends javax.swing.JFrame {
-  LinkedList<ClientsList> List = new LinkedList<ClientsList> ();
+
     /**
      * Creates new form CrearC
      */
     public CrearC() {
         initComponents();
+          this.setLocationRelativeTo(this);
     }
 
     /**
@@ -33,12 +36,12 @@ public class CrearC extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        Tcodigo = new javax.swing.JTextField();
-        tnombre = new javax.swing.JTextField();
-        Tnit = new javax.swing.JTextField();
-        Tcorreo = new javax.swing.JTextField();
+        JTcodigo = new javax.swing.JTextField();
+        JTnombre = new javax.swing.JTextField();
+        JTnit = new javax.swing.JTextField();
+        JTcorreo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        tgenero = new javax.swing.JTextField();
+        JTgenero = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -54,9 +57,9 @@ public class CrearC extends javax.swing.JFrame {
 
         jLabel6.setText("Genero");
 
-        Tcodigo.addActionListener(new java.awt.event.ActionListener() {
+        JTcodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TcodigoActionPerformed(evt);
+                JTcodigoActionPerformed(evt);
             }
         });
 
@@ -103,11 +106,11 @@ public class CrearC extends javax.swing.JFrame {
                                 .addComponent(jLabel2))
                             .addGap(58, 58, 58)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(Tcodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                .addComponent(tnombre)
-                                .addComponent(Tnit)
-                                .addComponent(Tcorreo)
-                                .addComponent(tgenero))))
+                                .addComponent(JTcodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                .addComponent(JTnombre)
+                                .addComponent(JTnit)
+                                .addComponent(JTcorreo)
+                                .addComponent(JTgenero))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jButton2)
@@ -123,23 +126,23 @@ public class CrearC extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(Tcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(tnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(Tnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(Tcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(tgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -164,47 +167,39 @@ public class CrearC extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TcodigoActionPerformed
+    private void JTcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTcodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TcodigoActionPerformed
+    }//GEN-LAST:event_JTcodigoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (Tcodigo.getText().isEmpty() && tnombre.getText().isEmpty()
-            && Tnit.getText().isEmpty() && Tcorreo.getText().isEmpty() && tgenero.getText().isEmpty()  ) {
+         if (JTcodigo.getText().isEmpty() && JTnombre.getText().isEmpty() 
+                && JTnit.getText().isEmpty() && JTcorreo.getText().isEmpty() && JTgenero.getText().isEmpty()  ) {
             JOptionPane.showMessageDialog(null, "Llena todos los campos");
         } else {
-            guardar();
-
-        }
+                enviarP();
+         Main Newframe = new Main();
+        Newframe.setVisible(true);
+        dispose();
+         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
-        App Newframe = new App() ;
+        Main Newframe = new Main() ;
         Newframe.setVisible(true);
         dispose();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void enviarP() {
     
-     public void guardar(){
-        
-      
-       ClientsList.List.add(new ClientsList(Integer.parseInt(Tcodigo.getText()), tnombre.getText(), 
-       Integer.parseInt(Tnit.getText()), Tcorreo.getText(), tgenero.getText()));
-        
-    App ap = new App ();
-    ap.setVisible(true);
-    dispose();
     
-       
-       
-       
-       
-    }
-    
+    Clientes PRO = new Clientes(Integer.parseInt(JTcodigo.getText()), JTnombre.getText(), Integer.parseInt(JTnit.getText()), JTcorreo.getText(), JTgenero.getText());
+    ClientesDAORelacional PRODAO = new ClientesDAORelacional();
+    PRODAO.crear_cliente(PRO);
+}
     
     
     
@@ -250,9 +245,11 @@ public class CrearC extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Tcodigo;
-    private javax.swing.JTextField Tcorreo;
-    private javax.swing.JTextField Tnit;
+    private javax.swing.JTextField JTcodigo;
+    private javax.swing.JTextField JTcorreo;
+    private javax.swing.JTextField JTgenero;
+    private javax.swing.JTextField JTnit;
+    private javax.swing.JTextField JTnombre;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -262,7 +259,5 @@ public class CrearC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField tgenero;
-    private javax.swing.JTextField tnombre;
     // End of variables declaration//GEN-END:variables
 }

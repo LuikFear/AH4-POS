@@ -64,11 +64,11 @@
                               </Group>
                               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="Tcodigo" alignment="0" pref="140" max="32767" attributes="0"/>
-                                  <Component id="tnombre" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="Tdi" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="Tcorreo" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="Tlefono" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="JTcodigo" alignment="0" pref="140" max="32767" attributes="0"/>
+                                  <Component id="JTnombre" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="JTdireccion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="JTcorreo" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="JTelefono" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -91,27 +91,27 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Tcodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JTcodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tnombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JTnombre" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Tdi" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JTdireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Tcorreo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JTcorreo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Tlefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -139,23 +139,23 @@
             <Property name="text" type="java.lang.String" value="Telefono"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Tcodigo">
+        <Component class="javax.swing.JTextField" name="JTcodigo">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TcodigoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTcodigoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="tnombre">
+        <Component class="javax.swing.JTextField" name="JTnombre">
         </Component>
-        <Component class="javax.swing.JTextField" name="Tdi">
+        <Component class="javax.swing.JTextField" name="JTdireccion">
         </Component>
-        <Component class="javax.swing.JTextField" name="Tcorreo">
+        <Component class="javax.swing.JTextField" name="JTcorreo">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Codigo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Tlefono">
+        <Component class="javax.swing.JTextField" name="JTelefono">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
