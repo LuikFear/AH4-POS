@@ -25,13 +25,14 @@ public class Main extends javax.swing.JFrame {
     DefaultTableModel tablaC;
     DefaultTableModel tablaV;
     DefaultTableModel tablaP;
-    
-     int filaV = -1;
-     int filaP = -1;
+
+    int filaV = -1;
+    int filaP = -1;
+    int filaC = -1;
     VendedoresDAORelacional daoV = new VendedoresDAORelacional();
     ProductosDAORelacional daoP = new ProductosDAORelacional();
-    
-    
+    ClientesDAORelacional daoC = new ClientesDAORelacional();
+
     public Main() {
         initComponents();
         datosC();
@@ -596,23 +597,20 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_B2Cargar3ActionPerformed
 
     private void B3Update3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3Update3ActionPerformed
-        // TODO add your handling code here:
-//
-//        if (TablaC.getSelectedRow() < 0) {
-//            JOptionPane.showMessageDialog(null, "Selecciona Una Fila primero");
-//        } else {
-//            UpCli mvc = new UpCli();
-//            mvc.contentC = TablaC.getSelectedRow();
-//            mvc.mostrar(TablaC.getSelectedRow());
-//            mvc.setVisible(true);
-//            dispose();
-//        }
+        filaC = Ctable.getSelectedRow();
+        if (Ctable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "Elige una opcion", "Alerta", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int codigo = Integer.parseInt(Ctable.getValueAt(filaC, 0).toString());
+            this.dispose();
+            new ModC(daoC.obtener_cliente(codigo)).setVisible(true);
+        }
 
 
     }//GEN-LAST:event_B3Update3ActionPerformed
 
     private void B3UpdatePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3UpdatePActionPerformed
-  filaP = Ptable.getSelectedRow();
+        filaP = Ptable.getSelectedRow();
         if (Ptable.getSelectedRow() < 0) {
             JOptionPane.showMessageDialog(null, "Elige una opcion", "Alerta", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -646,11 +644,11 @@ public class Main extends javax.swing.JFrame {
             this.dispose();
             new Main().setVisible(true);
         }
- 
+
     }//GEN-LAST:event_B4DeleteActionPerformed
 
     private void B4Delete4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4Delete4ActionPerformed
-    filaP = Ptable.getSelectedRow();
+        filaP = Ptable.getSelectedRow();
         if (Ptable.getSelectedRow() < 0) {
             JOptionPane.showMessageDialog(null, "Elige una fila", "Alerta", JOptionPane.WARNING_MESSAGE);
         } else {
@@ -662,18 +660,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_B4Delete4ActionPerformed
 
     private void B4Delete3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B4Delete3ActionPerformed
-        // TODO add your handling code here:
-
-//        if (TablaC.getSelectedRow() < 0) {
-//            JOptionPane.showMessageDialog(null, "Selecciona Una Fila primero");
-//        } else {
-//
-//            ClientsList.List.remove(TablaC.getSelectedRow());
-//
-//            Main Newframe = new Main();
-//            Newframe.setVisible(true);
-//            dispose();
-//        }
+     filaC = Ctable.getSelectedRow();
+        if (Ctable.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "Elige una fila", "Alerta", JOptionPane.WARNING_MESSAGE);
+        } else {
+            int codigo = Integer.parseInt(Ctable.getValueAt(filaC, 0).toString());
+            daoC.eliminar_cliente(codigo);
+            this.dispose();
+            new Main().setVisible(true);
+        }
 
     }//GEN-LAST:event_B4Delete3ActionPerformed
 
@@ -728,10 +723,10 @@ public class Main extends javax.swing.JFrame {
         Vtable.setModel(tablaV);
     }
 
-        private void datosP() {
+    private void datosP() {
         String columnas[] = {"codigo", "nombre", "descripcion", "cantidad", "precio"};
         tablaP = new DefaultTableModel(null, columnas);
-       ProductosDAORelacional PRDAO = new ProductosDAORelacional();
+        ProductosDAORelacional PRDAO = new ProductosDAORelacional();
 
         for (Productos dat : PRDAO.listarP()) {
             Object help[] = new Object[5];
@@ -744,9 +739,6 @@ public class Main extends javax.swing.JFrame {
         }
         Ptable.setModel(tablaP);
     }
-
-
-
 
 //     
 //     
