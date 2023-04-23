@@ -210,14 +210,14 @@ public class VendedoresDAORelacional implements DAOVendedoresInterface {
         
         public static void main(String[] args) throws IOException, FileNotFoundException, ParseException, SQLException {
         VendedoresDAORelacional js = new VendedoresDAORelacional();
-            js.carga_masiva();
+            js.carga_masivaV();
             
     }
         
         
         
         
-    public void carga_masiva() throws FileNotFoundException, IOException, ParseException, SQLException {
+    public void carga_masivaV() throws FileNotFoundException, IOException, ParseException, SQLException {
         
         String archivo_retorno = leerarchivoV();
     JsonParser parse = new JsonParser();

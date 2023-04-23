@@ -1,0 +1,12 @@
+Programa listo para cargar archivos en Json, puede haber un problema si el "codigo" en los archivos Json es duplicado
+por lo que se debera usar archivos Json con codigos no duplicados.
+
+
+en la carpeta Json para probar se encuentran unos archivos Json para probar la carga de datos
+me perdono si tienen entradas de codigo duplicadas.
+
+
+no tuve el tiempo para hacer la funcion de exportar, pero en mi tiempo libre seguire practicando
+y hare la funcion.
+
+

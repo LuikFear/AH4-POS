@@ -561,8 +561,10 @@ public class Main extends javax.swing.JFrame {
     private void B2CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2CargarActionPerformed
          try {
         VendedoresDAORelacional dao = new VendedoresDAORelacional();
-        dao.carga_masiva();
-       
+        dao.carga_masivaV();
+         Main Newframe = new Main();
+        Newframe.setVisible(true);
+        dispose();
     } catch (Exception e) {
         e.printStackTrace();
         
@@ -592,7 +594,16 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_B1crear1ActionPerformed
 
     private void B2Cargar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2Cargar1ActionPerformed
-        // TODO add your handling code here:
+          try {
+        SucursalesDAORelacional dao = new SucursalesDAORelacional();
+        dao.carga_masivaS();
+         Main Newframe = new Main();
+        Newframe.setVisible(true);
+        dispose();
+    } catch (Exception e) {
+        e.printStackTrace();
+        
+    }
     }//GEN-LAST:event_B2Cargar1ActionPerformed
 
     private void B3Update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3Update1ActionPerformed
@@ -616,7 +627,16 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_B1crear3ActionPerformed
 
     private void B2Cargar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2Cargar3ActionPerformed
-        // TODO add your handling code here:
+         try {
+        ClientesDAORelacional dao = new ClientesDAORelacional();
+        dao.carga_masivaC();
+         Main Newframe = new Main();
+        Newframe.setVisible(true);
+        dispose();
+    } catch (Exception e) {
+        e.printStackTrace();
+        
+    }
     }//GEN-LAST:event_B2Cargar3ActionPerformed
 
     private void B3Update3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3Update3ActionPerformed
@@ -645,7 +665,17 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_B3UpdatePActionPerformed
 
     private void B2Cargar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2Cargar4ActionPerformed
-        // TODO add your handling code here:
+      try {
+       ProductosDAORelacional dao = new ProductosDAORelacional ();
+        dao.carga_masivaP();
+           Main Newframe = new Main();
+        Newframe.setVisible(true);
+        dispose();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        
+    }
     }//GEN-LAST:event_B2Cargar4ActionPerformed
 //Crear Producto
     private void B1crearPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B1crearPActionPerformed
@@ -722,10 +752,7 @@ public class Main extends javax.swing.JFrame {
     }
 }
     
-    
-    
-    
-   
+
 
     private void datosC() {
         String columnas[] = {"codigo", "nombre", "nit", "correo", "genero"};
