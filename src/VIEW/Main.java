@@ -12,14 +12,29 @@ import DAO.ClientesDAORelacional;
 import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import DAO.VendedoresDAORelacional;
 import DAO.DAOCLientesInterface;
 import DAO.ProductosDAORelacional;
 import DAO.SucursalesDAORelacional;
 import MODEL.Vendedores;
-import DAO.VendedoresDAORelacional;
+
 import DAO.VendedoresDAORelacional;
 import MODEL.Productos;
 import MODEL.Sucursales;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.ParseException;
+import javax.swing.JFileChooser;
+import javax.swing.JPanel;
 
 public class Main extends javax.swing.JFrame {
 //tables
@@ -544,7 +559,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_B1crearActionPerformed
 
     private void B2CargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B2CargarActionPerformed
-        // TODO add your handling code here:
+         try {
+        VendedoresDAORelacional dao = new VendedoresDAORelacional();
+        dao.carga_masiva();
+       
+    } catch (Exception e) {
+        e.printStackTrace();
+        
+    }
     }//GEN-LAST:event_B2CargarActionPerformed
 
     private void B3UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B3UpdateActionPerformed
@@ -849,4 +871,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane5;
     // End of variables declaration//GEN-END:variables
+
+   
 }
