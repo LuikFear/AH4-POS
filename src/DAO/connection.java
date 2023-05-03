@@ -4,8 +4,8 @@ package DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class connection {
-    Connection con;
+public class connection  {
+    Connection con = null;
     String url="jdbc:mysql://localhost:3306/pos";
     String user="root";
     String pass="";

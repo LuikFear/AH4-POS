@@ -18,6 +18,12 @@ public class Productos {
         this.precio = precio;
     }
 
+    public Productos(int codigo, String nombre, Float precio) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+
     public int getCodigo() {
         return codigo;
     }

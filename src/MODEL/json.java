@@ -1,6 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package MODEL;
 
-
-import MODEL.Vendedores;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -23,10 +27,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-
-
-
-public class Json {
+/**
+ *
+ * @author javie
+ */
+public class json {
 
     private void creardoc() {
         String fileName = "example.txt";
@@ -53,33 +58,33 @@ public class Json {
 
     }
 
-    private void crearjson() {
-        String json = "[";
-        for (int i = 0; i < 10; i++) {
-            // Crear un objeto de tipo Persona
-            Vendedores ven = new Vendedores ("Juan", "Martinez", 22);
-
-            // Crear un objeto Gson
-            Gson gson = new Gson();
-
-            if (i < 9) {
-
-                // Convertir el objeto 'persona' en una cadena JSON
-                json += gson.toJson(us) + ",";
-            } else {
-
-                // Convertir el objeto 'persona' en una cadena JSON
-                json += gson.toJson(us);
-
-            }
-
-        }
-
-        json += "]";
-
-        // Imprimir la representación JSON
-        System.out.println(json);
-    }
+//    private void crearjson() {
+//        String json = "[";
+//        for (int i = 0; i < 10; i++) {
+//            // Crear un objeto de tipo Persona
+//            Usuario us = new Usuario("Juan", "Martinez", 22);
+//
+//            // Crear un objeto Gson
+//            Gson gson = new Gson();
+//
+//            if (i < 9) {
+//
+//                // Convertir el objeto 'persona' en una cadena JSON
+//                json += gson.toJson(us) + ",";
+//            } else {
+//
+//                // Convertir el objeto 'persona' en una cadena JSON
+//                json += gson.toJson(us);
+//
+//            }
+//
+//        }
+//
+//        json += "]";
+//
+//        // Imprimir la representación JSON
+//        System.out.println(json);
+//    }
 
     private String leerarchivo() {
         JFileChooser fc = new JFileChooser();
@@ -162,7 +167,7 @@ public class Json {
     }
 
     public static void main(String[] args) throws IOException, FileNotFoundException, ParseException, DocumentException {
-        Json js = new Json();
+        json js = new json();
         js.generar_pdf();
     }
 }

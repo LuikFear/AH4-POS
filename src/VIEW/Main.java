@@ -163,6 +163,11 @@ public class Main extends javax.swing.JFrame {
         });
 
         B5Export.setText("Exportar listado a PDF");
+        B5Export.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B5ExportActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/Bocho perfil.png"))); // NOI18N
 
@@ -216,6 +221,11 @@ public class Main extends javax.swing.JFrame {
         Productos.setBackground(new java.awt.Color(255, 255, 204));
 
         B5Export4.setText("Exportar listado a PDF");
+        B5Export4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B5Export4ActionPerformed(evt);
+            }
+        });
 
         B3UpdateP.setText("Actualizar");
         B3UpdateP.addActionListener(new java.awt.event.ActionListener() {
@@ -354,6 +364,11 @@ public class Main extends javax.swing.JFrame {
         });
 
         B5Export3.setText("Exportar listado a PDF");
+        B5Export3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B5Export3ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/Ryo perfil.png"))); // NOI18N
 
@@ -451,6 +466,11 @@ public class Main extends javax.swing.JFrame {
         });
 
         B5Export1.setText("Exportar listado a PDF");
+        B5Export1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                B5Export1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/Ikuyo perfil.png"))); // NOI18N
 
@@ -738,6 +758,70 @@ public class Main extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_B4Delete1ActionPerformed
+
+    private void B5ExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B5ExportActionPerformed
+       
+         try {
+        VendedoresDAORelacional daoI = new VendedoresDAORelacional();
+        daoI.expPDF();
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+        
+    }
+        
+       
+        
+        
+    }//GEN-LAST:event_B5ExportActionPerformed
+
+    private void B5Export4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B5Export4ActionPerformed
+     
+        
+         try {
+       ProductosDAORelacional dao = new ProductosDAORelacional();
+        dao.expPDFP();
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+        
+    }
+    }//GEN-LAST:event_B5Export4ActionPerformed
+
+    private void B5Export1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B5Export1ActionPerformed
+        
+         try {
+     SucursalesDAORelacional dao = new SucursalesDAORelacional();
+        dao.expPDFS();
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+        
+    }
+    }//GEN-LAST:event_B5Export1ActionPerformed
+
+    private void B5Export3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B5Export3ActionPerformed
+         try {
+     ClientesDAORelacional dao = new ClientesDAORelacional();
+        dao.expPDFC();
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+        
+    }
+    }//GEN-LAST:event_B5Export3ActionPerformed
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
     
    public void informacion(Vendedores ven) {
     if (ven.getCodigo() != 1) {

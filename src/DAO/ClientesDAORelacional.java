@@ -9,9 +9,23 @@ import MODEL.Clientes;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.awt.HeadlessException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -19,6 +33,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -184,11 +200,11 @@ public class ClientesDAORelacional implements DAOCLientesInterface{
         
         
         public static void main(String[] args) throws IOException, FileNotFoundException, ParseException, SQLException {
-        VendedoresDAORelacional js = new VendedoresDAORelacional();
-            js.carga_masivaV();
+        ClientesDAORelacional js = new ClientesDAORelacional();
+            js.expPDFC();
             
     }
-        
+            
         
         
         
@@ -230,7 +246,87 @@ public class ClientesDAORelacional implements DAOCLientesInterface{
     
     }
 
-    
+      public void expPDFC() {
+        Document file = new Document();
+        Date fechaActual = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        String fechaFormateada = formatoFecha.format(fechaActual);
+        try {
+
+            FileOutputStream gen = new FileOutputStream("Listado Oficial Clientes.pdf");
+
+            PdfWriter.getInstance(file, gen);
+            file.open();
+
+            Paragraph titulo = new Paragraph("Listado Clientes");
+            titulo.setAlignment(Element.ALIGN_CENTER);
+
+            file.add(titulo);
+
+            Paragraph fecha = new Paragraph(fechaFormateada);
+            fecha.setAlignment(Element.ALIGN_CENTER);
+
+            file.add(fecha);
+
+            file.add(new Paragraph("\n"));
+            PdfPTable col = new PdfPTable(5);
+            col.setWidthPercentage(100);
+
+            float[] cAn = {0.30f, 0.60f, 0.40f, 0.90f, 0.60f};
+            col.setWidths(cAn);
+
+            Font fontHeader = FontFactory.getFont("Arial", 12, Font.BOLD, BaseColor.BLACK);
+
+            PdfPCell celdacodigo = new PdfPCell(new Phrase("codigo", fontHeader));
+            celdacodigo.setBackgroundColor(new BaseColor(255, 120, 223));
+            col.addCell(celdacodigo);
+
+            PdfPCell celdaNombre = new PdfPCell(new Phrase("Nombre", fontHeader));
+            celdaNombre.setBackgroundColor(new BaseColor(171, 255, 171));
+            col.addCell(celdaNombre);
+
+            PdfPCell celdaCaja = new PdfPCell(new Phrase("nit", fontHeader));
+            celdaCaja.setBackgroundColor(new BaseColor(255, 255, 171));
+            col.addCell(celdaCaja);
+
+            PdfPCell celdaVentas = new PdfPCell(new Phrase("correo", fontHeader));
+            celdaVentas.setBackgroundColor(new BaseColor(171, 171, 255));
+            col.addCell(celdaVentas);
+
+            PdfPCell celdaGenero = new PdfPCell(new Phrase("genero", fontHeader));
+            celdaGenero.setBackgroundColor(new BaseColor(255, 102, 102));
+            col.addCell(celdaGenero);
+
+            
+
+            try {
+                String sql = "select * from clientes";
+                con = acceso.Conectar();
+                ps = con.prepareStatement(sql);
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    do {
+                        col.addCell(Integer.toString(rs.getInt(1)));
+                        col.addCell(rs.getString(2));
+                       col.addCell(Integer.toString(rs.getInt(3)));
+                       col.addCell(rs.getString(4));
+                        col.addCell(rs.getString(5));
+                        
+                    } while (rs.next());
+                    file.add(col);
+                }
+            } catch (DocumentException | SQLException e) {
+            }
+            file.close();
+            JOptionPane.showMessageDialog(null, "PDF Creado");
+        } catch (DocumentException | HeadlessException | FileNotFoundException e) {
+        }
+        try {
+            File sucursales_file = new File("Listado Oficial clientes.pdf");
+            Desktop.getDesktop().open(sucursales_file);
+        } catch (Exception e) {
+        }
+    }
     
     
     

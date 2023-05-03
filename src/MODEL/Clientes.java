@@ -5,6 +5,8 @@
  */
 package MODEL;
 
+import javax.swing.JComboBox;
+
 
 public class Clientes {
     private int codigo;
@@ -12,7 +14,16 @@ public class Clientes {
     private int nit;
     private String correo;
     private String genero;
+    private JComboBox combo;
 
+    public Clientes(String nombre, int nit, String correo, String genero, JComboBox combo) {
+        this.nombre = nombre;
+        this.nit = nit;
+        this.correo = correo;
+        this.genero = genero;
+        this.combo = combo;
+    }
+    
     public Clientes(int codigo, String nombre, int nit, String correo, String genero) {
         this.codigo = codigo;
         this.nombre = nombre;
@@ -21,6 +32,23 @@ public class Clientes {
         this.genero = genero;
     }
 
+    public Clientes(String nombre, int nit, String correo, String genero) {
+        this.nombre = nombre;
+        this.nit = nit;
+        this.correo = correo;
+        this.genero = genero;
+    }
+
+    public JComboBox getCombo() {
+        return combo;
+    }
+
+    public void setCombo(JComboBox combo) {
+        this.combo = combo;
+    }
+
+    
+    
     public int getCodigo() {
         return codigo;
     }
