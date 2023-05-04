@@ -109,14 +109,14 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_JTuserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-// TODO add your handling code here:
-        if (!JTuser.getText().isEmpty()&&!PFps.getText().isEmpty()  ) {
-            consulta();
+ if(JTuser.getText().equals("admin")&&PFps.getText().equals("admin")){
+            Main pr = new Main();
+            JOptionPane.showMessageDialog(null, "Bienvenido c:");
+            pr.setVisible(true);
+            dispose();
         }else{
-            JOptionPane.showMessageDialog(null, "Rellene los espacios");
+            consulta();
         }
-  
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
   
@@ -128,11 +128,8 @@ public class Login extends javax.swing.JFrame {
         labelName.setIcon(icon);
         this.repaint();
         
-        
         }
         
-    
-    
     
     
     private void consulta(){
@@ -143,7 +140,7 @@ public class Login extends javax.swing.JFrame {
             
         } else {
         }
-    Main ve = new Main();
+    Venderdor ve = new Venderdor();
     ve.informacion(ven);
     ve.setVisible(true);
     dispose();
@@ -153,9 +150,6 @@ public class Login extends javax.swing.JFrame {
        
 
 
-    
-    
-    
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

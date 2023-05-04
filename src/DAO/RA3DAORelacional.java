@@ -7,6 +7,7 @@ package DAO;
 
 import MODEL.Clientes;
 import MODEL.Productos;
+import MODEL.Vendedores;
 import MODEL.Ventas;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -50,7 +51,7 @@ public class RA3DAORelacional {
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
         try {
             while (rs.next()) {
-                String item = rs.getString(2); // Opción de ejemplo, puedes ajustarlo a tus necesidades
+                String item = rs.getString(2);
                 model.addElement(item);
             }
             despliegue.setModel(model);
@@ -83,10 +84,7 @@ public class RA3DAORelacional {
 //        }
 //
 //    }
-
-    
-    
-      public Productos obtener_pro(int codigo) {
+    public Productos obtener_pro(int codigo) {
         String sql = "select * from productos where codigo= ?";
         try {
             con = acceso.Conectar();
@@ -104,8 +102,7 @@ public class RA3DAORelacional {
         }
         return null;
     }
-    
-    
+
 //    public LinkedList<Ventas> listarP() {
 //
 //        String sql = "select * from Ventas";
@@ -130,45 +127,106 @@ public class RA3DAORelacional {
 //
 //        return null;
 //    }
-    
-    
-    
-     public LinkedList<Clientes> listarClientes(String nombre, int nit, String correo, String genero) {
-     
-    String sql = "SELECT * FROM clientes WHERE nombre LIKE '%"+nombre+"%' AND correo LIKE '%"+correo+"%' AND nit LIKE '%"+nit+"%' AND genero LIKE '%"+genero+"%';";
-    try {
-        LinkedList<Clientes> Listass = new LinkedList<>();
-        con = acceso.Conectar();
-        ps = con.prepareStatement(sql);
-        rs = ps.executeQuery();
-        while (rs.next()) {
-            Listass.add(new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5)));
+    public LinkedList<Clientes> listarClientes(String nombre, int nit, String correo, String genero) {
+
+        String sql = "SELECT * FROM clientes WHERE nombre LIKE '%" + nombre + "%' AND correo LIKE '%" + correo + "%' AND nit LIKE '%" + nit + "%' AND genero LIKE '%" + genero + "%';";
+        try {
+            LinkedList<Clientes> Listass = new LinkedList<>();
+            con = acceso.Conectar();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Listass.add(new Clientes(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5)));
+            }
+            return Listass;
+        } catch (Exception e) {
+            System.out.println(e);
         }
-        return Listass;
-    } catch (Exception e) {
-        System.out.println(e);
-    }
-    return null;
+        return null;
 
     }
-    
-    
-    
- public LinkedList<Ventas> listarVentas(int no, int nit, String nombre,  String fecha) {
-    String sql = "SELECT * FROM ventas WHERE no LIKE '%" + no + "%' AND nombre LIKE '%" + nombre + "%' AND nit LIKE '%" + nit + "%' AND fecha LIKE '%" + fecha + "%' AND total LIKE '%%';";
-    try {
-        LinkedList<Ventas> ListarC = new LinkedList<>();
-        con = acceso.Conectar();
-        ps = con.prepareStatement(sql);
-        rs = ps.executeQuery();
-        while (rs.next()) {
-            ListarC.add(new Ventas(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getFloat(5)));
+//all
+    public LinkedList<Productos> listarProductos() {
+        String sql = "SELECT * FROM productos";
+        LinkedList<Productos> listar = new LinkedList<>();
+        try {
+
+            con = acceso.Conectar();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listar.add(new Productos(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getFloat(5)));
+            }
+            return listar;
+
+        } catch (Exception e) {
+            System.out.println(e);
         }
-        return ListarC;
-    } catch (Exception e) {
-        System.out.println(e);
+        return null;
     }
-    return null;
-}
-    
+
+    public void modificarProducto(int codigo, int cantidad) {
+        String sql = "update productos set cantidad = cantidad-? WHERE codigo = ?;";
+        try {
+            con = acceso.Conectar();
+            ps = con.prepareStatement(sql);
+
+            ps.setInt(2, codigo);
+            ps.setInt(1, cantidad);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public LinkedList<Ventas> listarVentas(int no, int nit, String nombre, String fecha) {
+        String sql = "SELECT * FROM ventas WHERE no LIKE '%" + no + "%' AND nombre LIKE '%" + nombre + "%' AND nit LIKE '%" + nit + "%' AND fecha LIKE '%" + fecha + "%' AND total LIKE '%%';";
+        try {
+            LinkedList<Ventas> ListarC = new LinkedList<>();
+            con = acceso.Conectar();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                ListarC.add(new Ventas(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getFloat(5)));
+            }
+            return ListarC;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+// public Clientes seleccionarCliente(String nombre, int nit, String correo, String genero) {
+//    LinkedList<Clientes> listaClientes = listarClientes(nombre, nit, correo, genero);
+//    Clientes SClient = null;
+//  
+//    if (listaClientes.size() > 0) {
+//        SClient = listaClientes.getFirst();
+//    }
+//    
+//    return SClient;
+//}
+    //solo 1
+    public LinkedList<Productos> listarProducto(int Lpc) {
+        String sql = "select codigo, nombre, cantidad, precio from productos where codigo= ?";
+
+        try {
+            LinkedList<Productos> listar = new LinkedList<>();
+            con = acceso.Conectar();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, Lpc);
+            
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                listar.add(new Productos(rs.getInt(1), rs.getString(2), rs.getInt(4), rs.getFloat(5)));
+                return listar;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Articulo sin existencias");
+        }
+        return null;
+    }
+ 
 }

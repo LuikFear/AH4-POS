@@ -26,22 +26,26 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Venderdor extends javax.swing.JFrame {
 
-    DefaultTableModel tablaP;
-
+    DefaultTableModel tablaP, t2, t3;
     int filaP = -1;
 
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
     connection acceso = new connection();
+    LinkedList<String> Lp = new LinkedList<>();
 
     public Venderdor() {
         initComponents();
         mostrarFechaActual();
+        this.setLocationRelativeTo(this);
+
+//            suma();
     }
 
     @SuppressWarnings("unchecked")
@@ -70,6 +74,7 @@ public class Venderdor extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         Despliegue = new javax.swing.JComboBox<>();
+        jButton3 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -83,7 +88,7 @@ public class Venderdor extends javax.swing.JFrame {
         TablaVentas = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        tot = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
@@ -101,6 +106,7 @@ public class Venderdor extends javax.swing.JFrame {
         Tclientes = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
         wel = new javax.swing.JLabel();
+        label = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -172,6 +178,13 @@ public class Venderdor extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Limpiar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -180,10 +193,21 @@ public class Venderdor extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel5)
+                        .addGap(64, 64, 64)
+                        .addComponent(jLabel10)
+                        .addGap(29, 29, 29)
+                        .addComponent(Despliegue, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jButton3))
                         .addGap(72, 72, 72)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -204,17 +228,8 @@ public class Venderdor extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(Jnit)
-                                    .addComponent(Jgenero, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(64, 64, 64)
-                        .addComponent(jLabel10)
-                        .addGap(29, 29, 29)
-                        .addComponent(Despliegue, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19))))
+                                    .addComponent(Jgenero, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,13 +247,14 @@ public class Venderdor extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel9)
                     .addComponent(Jcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Jgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Jgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 8, Short.MAX_VALUE)
+                        .addGap(0, 5, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(jLabel10)
@@ -263,6 +279,11 @@ public class Venderdor extends javax.swing.JFrame {
         jLabel13.setText("No.");
 
         BTagregar.setText("Agregar");
+        BTagregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTagregarActionPerformed(evt);
+            }
+        });
 
         TablaVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -283,10 +304,10 @@ public class Venderdor extends javax.swing.JFrame {
 
         jLabel14.setText("Total:");
 
-        jTextField7.setEnabled(false);
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        tot.setEnabled(false);
+        tot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                totActionPerformed(evt);
             }
         });
 
@@ -328,7 +349,7 @@ public class Venderdor extends javax.swing.JFrame {
                         .addGap(114, 114, 114)
                         .addComponent(jLabel14)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tot, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 68, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -354,7 +375,7 @@ public class Venderdor extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 19, Short.MAX_VALUE))
         );
 
@@ -508,6 +529,9 @@ public class Venderdor extends javax.swing.JFrame {
             }
         });
 
+        label.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        label.setText("jLabel12");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -516,6 +540,8 @@ public class Venderdor extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(wel, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -526,10 +552,12 @@ public class Venderdor extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(wel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton5)))
+                        .addComponent(jButton5))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(label)
+                        .addComponent(wel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1)
                 .addContainerGap())
@@ -557,9 +585,9 @@ public class Venderdor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JgeneroActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void totActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_totActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -578,7 +606,7 @@ public class Venderdor extends javax.swing.JFrame {
     }//GEN-LAST:event_DespliegueActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       consultarV();
+        consultarV();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void JtnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JtnoActionPerformed
@@ -589,7 +617,26 @@ public class Venderdor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTnitActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        vaciar();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void BTagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTagregarActionPerformed
+
+        int c = Integer.parseInt(JTcodigo.getText());
+        int ca = Integer.parseInt(JTcantidad.getText());
+        comprobarPro();
+        if (Lp.contains(c + "")) {
+            datostabla(c, ca);
+            suma();
+        } else {
+            JOptionPane.showMessageDialog(null, "no ay articulo para mostrar :c");
+        }
+
+    }//GEN-LAST:event_BTagregarActionPerformed
+
     public void informacion(Vendedores usuarios) {
+        label.setText("Bienvenido al imalaya " + usuarios.getNombre() + "!!!!");
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
 //        String fechaFormateada = formatoFecha.format(fechaActual);
@@ -613,7 +660,6 @@ public class Venderdor extends javax.swing.JFrame {
         String correo = Jcorreo.getText();
         int nit = Integer.parseInt(Jnit.getText());
         String genero = Jgenero.getText();
-
         LinkedList<String> cuadro = new LinkedList<>();
         RA3DAORelacional cr = new RA3DAORelacional();
         for (Clientes crea : cr.listarClientes(nombre, nit, correo, genero)) {
@@ -632,53 +678,110 @@ public class Venderdor extends javax.swing.JFrame {
 
     }
 
-    
+    private float suma() {
 
-  private void consultarV() {
-    String nombre = Jtnombre.getText();
-    String nitStr = JTnit.getText();
-    int nit = 0;
-    if (!nitStr.isEmpty()) {
-        nit = Integer.parseInt(nitStr);
-    }
-    String fecha = JTfecha.getText();
-//    int no = Integer.parseInt(Jtno.getText());
-      String noStr = Jtno.getText();
-int no = 0;
-    if (!noStr.isEmpty()) {
-        no = Integer.parseInt(noStr);
-    }
-    DefaultTableModel modelo = new DefaultTableModel();
-    modelo.addColumn("No");
-    modelo.addColumn("Nit");
-    modelo.addColumn("Nombre");
-    modelo.addColumn("Fecha");
-    modelo.addColumn("Total");
-    RA3DAORelacional cr = new RA3DAORelacional();
-   for (Ventas venta : cr.listarVentas(no, nit, nombre, fecha)) {
-        Object[] row = new Object[5];
-        row[0] = venta.getNo();
-        row[1] = venta.getNit();
-        row[2] = venta.getNombre();
-        row[3] = venta.getFecha();
-        row[4] = venta.getTotal();
-        modelo.addRow(row);
+        int e = TablaVentas.getRowCount();
+        float suma = 0;
+        for (int i = 0; i < e; i++) {
+            suma += Float.parseFloat(TablaVentas.getValueAt(i, 4).toString());
+        }
+        tot.setText(String.valueOf(suma));
+        return suma;
     }
 
-    Tclientes.setModel(modelo);
-}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    private void vaciar() {
+        Jtnombre.setText("");
+        Jcorreo.setText("");
+        Jnit.setText("");
+        Jgenero.setText("");
+        if (Jtnombre.getText().isEmpty() && Jnit.getText().isEmpty() && Jcorreo.getText().isEmpty() && Jgenero.getText().isEmpty()) {
+            Despliegue.removeAllItems();
+        }
+    }
+
+    private void consultarV() {
+        String nombre = Jtnombre.getText();
+        String nitStr = JTnit.getText();
+        int nit = 0;
+        if (!nitStr.isEmpty()) {
+            nit = Integer.parseInt(nitStr);
+        }
+        String fecha = JTfecha.getText();
+
+        String noStr = Jtno.getText();
+        int no = 0;
+        if (!noStr.isEmpty()) {
+            no = Integer.parseInt(noStr);
+        }
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("No");
+        modelo.addColumn("Nit");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Fecha");
+        modelo.addColumn("Total");
+        RA3DAORelacional Custom = new RA3DAORelacional();
+        for (Ventas venta : Custom.listarVentas(no, nit, nombre, fecha)) {
+            Object[] row = new Object[5];
+            row[0] = venta.getNo();
+            row[1] = venta.getNit();
+            row[2] = venta.getNombre();
+            row[3] = venta.getFecha();
+            row[4] = venta.getTotal();
+            modelo.addRow(row);
+        }
+
+        Tclientes.setModel(modelo);
+    }
+
+//   public Clientes seleccionarCliente(String nombre, int nit, String correo, String genero) {
+//    LinkedList<Clientes> listaClientes = listarClientes(nombre, nit, correo, genero);
+//    Clientes SClient = null;
+//    
+//    // Aquí se puede implementar alguna lógica para seleccionar un cliente en particular de la lista de clientes
+//    
+//    if (listaClientes.size() > 0) {
+//        SClient = listaClientes.getFirst(); // Selecciona el primer cliente de la lista
+//    }
+//    
+//    return SClient;
+//}
+    //tratar de inicializar la tabla pero nel :c
+    public void tabla() {
+        String columnas[] = {"Codigo", "Nombre", "Cantidad", "Precio", "Subtotal"};
+        tablaP = new DefaultTableModel(null, columnas);
+        TablaVentas.setModel(tablaP);
+    }
+
+    public void datostabla(int id, int list) {
+
+        RA3DAORelacional ad = new RA3DAORelacional();
+        for (Productos dat : ad.listarProducto(id)) {
+            Object tab[] = new Object[6];
+            tab[0] = dat.getCodigo();
+            tab[1] = dat.getNombre();
+            tab[2] = list;
+            tab[3] = dat.getPrecio();
+            tab[4] = dat.getPrecio() * list;
+
+            if (dat.getCantidad() <= 0) {
+                JOptionPane.showMessageDialog(null, "ya no hay producto");
+
+                break;
+            } else if ((dat.getCantidad()) < list) {
+                JOptionPane.showMessageDialog(null, "no hay esa cantidad en existencia: " + dat.getCantidad());
+                break;
+            }
+            tablaP.addRow(new Object[]{
+                tab[0], tab[1], tab[2], tab[3], tab[4]
+            });
+            ad.modificarProducto(id, list);
+        }
+        TablaVentas.setModel(tablaP);
+
+        JTcodigo.setText("");
+        JTcantidad.setText("");
+    }
+
     public void mostrarFechaActual() {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         Date fechaActual = new Date();
@@ -686,33 +789,22 @@ int no = 0;
         date.setText(fechaFormateada);
     }
 
-//    private void datosP() {
-//        String columnas[] = {"No", "codigo", "nombre", "cantidad", "precio", "subtotal"};
-//        tablaP = new DefaultTableModel(null, columnas);
-//        RA3DAORelacional PRDAO = new RA3DAORelacional();
-//
-//        for (Ventas dat : PRDAO.listarP()) {
-//            Object help[] = new Object[6];
-//            help[0] = dat.getNo();
-//            help[1] = dat.getCodigo();
-//            help[2] = dat.getNombre();
-//            help[3] = dat.getCantidad();
-//            help[4] = dat.getPrecio();
-//            help[5] = dat.getSubtotal();
-//            tablaP.addRow(help);
-//        }
-//        TablaVentas.setModel(tablaP);
-//    }
+    private void comprobarPro() {
+        RA3DAORelacional ah = new RA3DAORelacional();
+        for (Productos dat : ah.listarProductos()) {
+            Object tab[] = new Object[5];
+            tab[0] = dat.getCodigo();
+            tab[1] = dat.getNombre();
+            tab[2] = dat.getDescripcion();
+            tab[3] = dat.getCantidad();
+            tab[4] = dat.getPrecio();
+            Lp.add(String.valueOf(tab[0]));
+        }
+    }
 
-    /**
-     * @param args the command line arguments
-     */
+  
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+       
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -758,6 +850,7 @@ int no = 0;
     private javax.swing.JLabel date;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -791,8 +884,9 @@ int no = 0;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTree jTree1;
+    private javax.swing.JLabel label;
+    private javax.swing.JTextField tot;
     private javax.swing.JLabel wel;
     // End of variables declaration//GEN-END:variables
 }

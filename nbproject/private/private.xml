@@ -5,7 +5,8 @@
         <group>
             <file>file:/D:/Todo%20Java/NetFrijoles/POS/src/DAO/RA3DAORelacional.java</file>
             <file>file:/D:/Todo%20Java/NetFrijoles/POS/src/VIEW/Main.java</file>
-            <file>file:/D:/Todo%20Java/NetFrijoles/POS/src/DAO/ProductosDAORelacional.java</file>
+            <file>file:/D:/Todo%20Java/NetFrijoles/POS/src/DAO/VendedoresDAORelacional.java</file>
+            <file>file:/D:/Todo%20Java/NetFrijoles/POS/src/VIEW/Login.java</file>
             <file>file:/D:/Todo%20Java/NetFrijoles/POS/src/VIEW/Venderdor.java</file>
         </group>
     </open-files>

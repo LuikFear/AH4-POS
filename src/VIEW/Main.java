@@ -822,17 +822,11 @@ public class Main extends javax.swing.JFrame {
     
     
     
-    
-   public void informacion(Vendedores ven) {
-    if (ven.getCodigo() != 1) {
-        B1crear.setVisible(false);
-        B2Cargar.setVisible(false);
-        B3Update.setVisible(false);
-        B4Delete.setVisible(false);
-        B1crear1.setVisible(false);
-         B2Cargar1.setVisible(false);
-        B3Update1.setVisible(false);
-        B4Delete1.setVisible(false);
+  public void informacion(Vendedores ven) {
+    if (ven.getCodigo() <= 1) {
+        Venderdor Newframe = new Venderdor();
+        Newframe.setVisible(true);
+        dispose();
     }
 }
     

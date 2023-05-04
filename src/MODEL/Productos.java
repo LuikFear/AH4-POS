@@ -24,6 +24,13 @@ public class Productos {
         this.precio = precio;
     }
 
+    public Productos(int codigo, String nombre, int cantidad, Float precio) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio = precio;
+    }
+
     public int getCodigo() {
         return codigo;
     }

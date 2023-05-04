@@ -41,6 +41,13 @@ public class Vendedores {
         this.pass = pass;
     }
 
+    public Vendedores(String nombre,  String pass,int caja) {
+        this.nombre = nombre;
+       
+        this.pass = pass;
+         this.caja = caja;
+    }
+
     
     
     
